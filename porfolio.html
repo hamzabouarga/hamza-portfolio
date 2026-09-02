@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hamza Bouarga — Étudiant à la maîtrise en actuariat, Université Laval. Finance quantitative, gestion des risques, ORSA.">
+<title>Hamza Bouarga — Actuariat & Finance Quantitative</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='7' y='7' width='86' height='86' rx='12' fill='%23102A43'/%3E%3Ctext x='50' y='63' font-family='Georgia,serif' font-size='38' font-weight='600' fill='white' text-anchor='middle'%3EHB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F7FA;
+    --panel:#FFFFFF;
+    --panel-alt:#EDF2F7;
+    --line:#D6E0E8;
+    --ink:#102A43;
+    --ink-dim:#486581;
+    --ink-faint:#7B8FA3;
+    --wine:#174A6E;
+    --wine-soft:#E8F1F7;
+    --brass:#2E7192;
+    --brass-soft:#E7F2F7;
+    --forest:#1F6B63;
+    --forest-soft:#E7F3F1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden;}
+  ::selection{background:var(--wine);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  .serif{font-family:'Fraunces',serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  ul{list-style:none;}
+
+  /* ===================== RAIL ===================== */
+  .rail{
+    position:fixed;top:0;left:0;bottom:0;width:264px;
+    background:var(--panel);border-right:1px solid var(--line);
+    display:flex;flex-direction:column;padding:34px 26px;z-index:100;
+  }
+  .rail-id{margin-bottom:40px;display:flex;align-items:center;gap:12px;}
+  .rail-seal{
+    width:44px;height:44px;border-radius:50%;border:1.2px solid var(--wine);
+    display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;
+  }
+  .rail-seal::before{content:'';position:absolute;inset:4px;border:1px solid rgba(23,74,110,0.3);border-radius:50%;}
+  .rail-seal span{font-family:'Fraunces',serif;font-weight:600;font-size:14px;color:var(--wine);}
+  .rail-name{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--ink);margin-bottom:3px;}
+  .rail-role{font-size:11px;color:var(--ink-faint);line-height:1.5;}
+
+  .rail-index{flex:1;display:flex;flex-direction:column;gap:2px;}
+  .rail-link{
+    display:flex;align-items:baseline;gap:10px;padding:9px 0 9px 12px;margin-left:-1px;
+    font-size:12.5px;color:var(--ink-faint);border-left:1.5px solid transparent;
+    transition:color .2s,border-color .2s;
+  }
+  .rail-link .num{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-faint);}
+  .rail-link:hover{color:var(--ink);}
+  .rail-link.active{color:var(--wine);border-left-color:var(--wine);}
+  .rail-link.active .num{color:var(--wine);}
+
+  .rail-foot{margin-top:20px;}
+  .rail-badge{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.03em;
+    display:flex;align-items:center;gap:7px;color:var(--forest);
+    border:1px solid rgba(31,107,99,0.3);background:var(--forest-soft);
+    padding:9px 12px;border-radius:3px;margin-bottom:10px;
+  }
+  .rail-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--forest);animation:blink 2s infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .rail-note{font-size:10.5px;color:var(--ink-faint);line-height:1.5;}
+
+  @media(max-width:980px){
+    .rail{position:relative;width:100%;height:auto;flex-direction:row;align-items:center;
+      padding:14px 20px;border-right:none;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:14px;}
+    .rail-id{margin-bottom:0;}
+    .rail-seal{width:36px;height:36px;}
+    .rail-role{display:none;}
+    .rail-index{display:none;}
+    .rail-foot{margin-top:0;margin-left:auto;}
+    .rail-note{display:none;}
+  }
+
+  /* ===================== MAIN ===================== */
+  .main{margin-left:264px;}
+  @media(max-width:980px){.main{margin-left:0;}}
+
+  section{padding:110px 60px 92px;max-width:960px;}
+  @media(max-width:980px){section{padding:70px 26px 56px;}}
+  .sec-index{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--wine);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .sec-index::after{content:'';flex:0 0 40px;height:1px;background:var(--line);}
+  .sec-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(25px,2.9vw,36px);letter-spacing:-0.01em;margin-bottom:40px;color:var(--ink);}
+  .sec-title em{font-style:italic;color:var(--wine);}
+  .sec-lead{max-width:760px;margin:-22px 0 34px;font-size:15px;line-height:1.8;color:var(--ink-dim);}
+
+  /* ===================== HERO ===================== */
+  .hero{padding-top:100px;padding-bottom:56px;}
+  .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;}
+  h1.hero-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,5.4vw,68px);line-height:1.03;letter-spacing:-0.015em;margin-bottom:8px;}
+  .hero-role{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(17px,1.8vw,21px);color:var(--wine);margin-bottom:26px;}
+  .hero-sub{font-size:15.5px;line-height:1.8;color:var(--ink-dim);max-width:600px;margin-bottom:28px;}
+
+  .badge-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:20px;}
+  .badge{font-size:12px;padding:7px 14px;border-radius:20px;border:1px solid var(--line);color:var(--ink-dim);background:var(--panel);}
+  .badge.wine{border-color:rgba(23,74,110,0.3);color:var(--wine);background:var(--wine-soft);}
+
+  .roles-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px;}
+  .role-tag{font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 12px;border-radius:3px;background:var(--panel-alt);color:var(--ink-dim);}
+  .role-tag.label{padding-left:0;background:transparent;color:var(--wine);font-weight:600;}
+
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{font-size:13px;padding:13px 25px;border-radius:2px;display:inline-flex;align-items:center;gap:8px;transition:all .2s;font-weight:500;}
+  .btn-primary{background:var(--wine);color:#fff;}
+  .btn-primary:hover{background:#103A58;transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:var(--panel);}
+  .btn-ghost:hover{border-color:var(--wine);color:var(--wine);}
+
+  /* Key facts strip */
+  .facts-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:46px;background:var(--panel);}
+  @media(max-width:700px){.facts-strip{grid-template-columns:repeat(2,1fr);}}
+  .fact-cell{padding:22px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .fact-cell:nth-child(4n){border-right:none;}
+  .fact-num{font-family:'Fraunces',serif;font-weight:600;font-size:26px;color:var(--wine);margin-bottom:4px;}
+  .fact-label{font-size:11px;color:var(--ink-faint);letter-spacing:0.02em;}
+
+  /* Timeline ribbon */
+  .ribbon-wrap{margin-top:46px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:26px 30px 20px;}
+  .ribbon-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:30px;}
+  .ribbon{position:relative;display:flex;justify-content:space-between;padding-top:8px;}
+  .ribbon::before{content:'';position:absolute;top:14px;left:0;right:0;height:1.4px;background:var(--line);}
+  .ribbon-item{position:relative;flex:1;text-align:center;padding:0 6px;}
+  .ribbon-dot{width:11px;height:11px;border-radius:50%;background:var(--panel);border:2px solid var(--wine);margin:0 auto 14px;position:relative;z-index:1;}
+  .ribbon-item.milestone .ribbon-dot{background:var(--wine);}
+  .ribbon-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);margin-bottom:4px;}
+  .ribbon-kind{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--wine);margin-bottom:5px;}
+  .ribbon-label{font-size:11.5px;font-weight:600;color:var(--ink);line-height:1.35;}
+  @media(max-width:700px){.ribbon{flex-direction:column;gap:22px;} .ribbon::before{display:none;} .ribbon-item{display:flex;align-items:flex-start;gap:14px;text-align:left;} .ribbon-dot{margin:3px 0 0;flex-shrink:0;}}
+
+  /* ===================== FORMATION ===================== */
+  .formation-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media(max-width:820px){.formation-grid{grid-template-columns:1fr;}}
+  .formation-card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:30px 28px;position:relative;overflow:hidden;}
+  .formation-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--wine);}
+  .formation-card.alt::before{background:var(--forest);}
+  .f-dates{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-faint);margin-bottom:10px;}
+  .f-title{font-family:'Fraunces',serif;font-weight:600;font-size:18.5px;margin-bottom:4px;}
+  .f-loc{font-size:12.5px;color:var(--ink-dim);margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line);}
+  .f-list li{font-size:13.5px;line-height:1.6;color:var(--ink-dim);padding-left:15px;position:relative;margin-bottom:9px;}
+  .f-list li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--wine);}
+  .formation-card.alt .f-list li::before{background:var(--forest);}
+
+  .academic-panel{margin-top:24px;background:var(--panel);border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:0.8fr 1.2fr;overflow:hidden;}
+  @media(max-width:820px){.academic-panel{grid-template-columns:1fr;}}
+  .academic-score{padding:30px 30px 26px;background:var(--wine-soft);border-right:1px solid rgba(23,74,110,0.14);}
+  @media(max-width:820px){.academic-score{border-right:none;border-bottom:1px solid rgba(23,74,110,0.14);}}
+  .academic-kicker{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--wine);margin-bottom:12px;}
+  .academic-gpa{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;}
+  .academic-gpa strong{font-family:'Fraunces',serif;font-size:42px;line-height:1;color:var(--wine);font-weight:600;}
+  .academic-gpa span{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dim);}
+  .academic-score p{font-size:12px;line-height:1.6;color:#153E5C;margin-bottom:15px;}
+  .gpa-track{height:6px;border-radius:4px;background:rgba(23,74,110,0.14);overflow:hidden;}
+  .gpa-fill{height:100%;width:84.1%;background:var(--wine);border-radius:4px;}
+  .gpa-scale{display:flex;justify-content:space-between;margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink-faint);}
+  .academic-details{padding:26px 28px;}
+  .academic-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:600px){.academic-metrics{grid-template-columns:1fr;}}
+  .academic-metric{padding:13px 14px;border:1px solid var(--line);border-radius:3px;background:var(--panel-alt);}
+  .academic-metric strong{display:block;font-family:'Fraunces',serif;font-size:21px;color:var(--forest);margin-bottom:3px;}
+  .academic-metric span{font-size:10.5px;line-height:1.35;color:var(--ink-dim);}
+
+  .ica-track{margin-top:24px;background:var(--panel-alt);border:1px solid var(--line);border-radius:3px;padding:22px 26px;}
+  .ica-head-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:18px;}
+  .ica-bar-track{height:3px;background:var(--line);border-radius:2px;position:relative;margin-bottom:18px;}
+  .ica-bar-fill{position:absolute;left:0;top:0;height:100%;width:40%;background:var(--forest);border-radius:2px;}
+  .ica-labels{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .ica-labels div{font-size:11.5px;}
+  .ica-labels .t{font-weight:600;color:var(--ink);margin-bottom:2px;}
+  .ica-labels .s{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);}
+  .ica-labels .active .t{color:var(--brass);}
+  @media(max-width:700px){.ica-bar-track{display:none;}.ica-labels{grid-template-columns:1fr 1fr;gap:16px 12px;}.ica-labels>div{padding-left:10px;border-left:2px solid var(--line);}.ica-labels>div:last-child{grid-column:1/-1;}}
+
+  /* ===================== ESSAI ===================== */
+  .essai-panel{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:40px 42px;display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px;}
+  @media(max-width:820px){.essai-panel{grid-template-columns:1fr;padding:28px 24px;}}
+  .essai-chapter{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--wine);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;}
+  .essai-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(20px,2.3vw,26px);line-height:1.22;margin-bottom:20px;}
+  .essai-meta{display:flex;flex-direction:column;gap:9px;font-size:12.5px;color:var(--ink-dim);}
+  .essai-meta b{color:var(--ink);font-weight:500;}
+  .essai-thesis{margin-top:26px;padding:18px 20px;border-left:3px solid var(--wine);background:var(--wine-soft);font-family:'Fraunces',serif;font-size:16px;line-height:1.55;color:#153E5C;}
+  .essai-body p{font-size:13.5px;line-height:1.8;color:var(--ink-dim);margin-bottom:14px;}
+  .essai-subhead{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--wine);margin:22px 0 10px;}
+  .essai-axes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 20px;}
+  @media(max-width:1000px){.essai-axes{grid-template-columns:1fr;}}
+  .essai-axis{border:1px solid var(--line);border-radius:3px;padding:15px 14px;background:var(--panel-alt);}
+  .essai-axis-num{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--forest);margin-bottom:7px;}
+  .essai-axis-title{font-family:'Fraunces',serif;font-size:14px;font-weight:600;line-height:1.25;margin-bottom:6px;}
+  .essai-axis p{font-size:11.5px;line-height:1.55;margin:0;color:var(--ink-dim);}
+  .essai-insurer{margin:20px 0;padding:18px 20px;border:1px solid rgba(31,77,58,0.28);border-left:3px solid var(--forest);background:var(--forest-soft);}
+  .essai-insurer b{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--forest);margin-bottom:8px;}
+  .essai-insurer p{margin:0;color:#294D3D;}
+  .essai-limit{font-size:12px!important;line-height:1.65!important;color:var(--ink-faint)!important;border-top:1px solid var(--line);padding-top:14px;}
+  .essai-topics{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px;}
+  .essai-topics span{font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 11px;border-radius:20px;border:1px solid rgba(23,74,110,0.25);color:var(--wine);background:var(--wine-soft);}
+  .essai-link{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink);border-bottom:1px solid var(--wine);padding-bottom:2px;display:inline-flex;align-items:center;gap:6px;}
+  .essai-link:hover{color:var(--wine);}
+
+  /* ===================== EXPERIENCE ===================== */
+  .timeline{position:relative;padding-left:34px;}
+  .timeline::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:1.4px;background:var(--line);}
+  .t-item{position:relative;padding-bottom:40px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:'';position:absolute;left:-38px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--wine);}
+  .t-date{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--wine);margin-bottom:5px;}
+  .t-title{font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin-bottom:2px;}
+  .t-status{display:inline-block;margin-left:8px;padding:3px 7px;border:1px solid var(--line);border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-dim);vertical-align:middle;}
+  .t-org{font-size:13px;color:var(--ink-dim);margin-bottom:12px;}
+  .t-list li{font-size:13.5px;line-height:1.6;color:var(--ink-dim);padding-left:16px;position:relative;margin-bottom:7px;max-width:640px;}
+  .t-list li::before{content:'—';position:absolute;left:0;color:var(--ink-faint);}
+
+  /* ===================== PROJECTS ===================== */
+
+  .research-panel{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:36px 38px;margin-bottom:26px;}
+  @media(max-width:768px){.research-panel{padding:26px 22px;}}
+  .rp-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--wine);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;}
+  .rp-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(19px,2.2vw,25px);line-height:1.28;margin-bottom:16px;}
+  .rp-meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:12.5px;color:var(--ink-dim);margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);}
+  .rp-meta b{color:var(--ink);font-weight:500;}
+  .rp-body{display:grid;grid-template-columns:1.15fr 0.85fr;gap:32px;}
+  @media(max-width:820px){.rp-body{grid-template-columns:1fr;}}
+  .rp-text p{font-size:13.5px;line-height:1.8;color:var(--ink-dim);margin-bottom:14px;}
+  .rp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .rp-tags span{font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 11px;border-radius:20px;border:1px solid rgba(23,74,110,0.25);color:var(--wine);background:var(--wine-soft);}
+  .rp-links{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap;}
+
+  .rp-subhead{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--wine);margin:18px 0 6px;}
+  .rp-subhead:first-child{margin-top:0;}
+
+  .rp-figure{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:22px 22px 16px;}
+  .rp-figure svg{width:100%;height:auto;display:block;}
+  .rp-figure-caption{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;line-height:1.6;color:var(--ink-dim);}
+  .rp-figure-caption b{color:var(--ink);font-weight:600;}
+
+  .rp-chart{background:var(--panel-alt);border-radius:3px;padding:22px 24px;}
+  .rp-chart-title{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:18px;}
+  .rp-bar-row{display:grid;grid-template-columns:132px 1fr 44px;align-items:center;gap:10px;margin-bottom:12px;}
+  .rp-bar-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dim);}
+  .rp-bar-track{height:16px;background:var(--panel);border-radius:2px;overflow:hidden;}
+  .rp-bar-fill{height:100%;background:linear-gradient(90deg,var(--forest),var(--wine));border-radius:2px;}
+  .rp-bar-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);text-align:right;}
+  .rp-chart-caption{font-size:11.5px;color:var(--ink-faint);margin-top:14px;line-height:1.5;}
+  .rp-callout{background:var(--panel-alt);border-left:3px solid var(--wine);border-radius:0 3px 3px 0;padding:16px 20px;margin:18px 0;}
+  .rp-callout .rp-subhead{margin-top:0;}
+  .rp-callout p{font-size:13.5px;line-height:1.8;color:var(--ink-dim);margin:0;}
+  .rp-callout-forest{border-left-color:var(--forest);background:var(--forest-soft);}
+  .rp-callout-forest .rp-subhead{color:var(--forest);}
+  .rp-snapshot{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:24px 0 18px;background:var(--line);border:1px solid var(--line);}
+  .rp-snapshot-item{background:var(--panel);padding:18px 19px;}
+  .rp-snapshot-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wine);margin-bottom:8px;}
+  .rp-snapshot-item p{font-size:13.5px;line-height:1.7;color:var(--ink-dim);}
+  .rp-relevance{display:flex;align-items:flex-start;gap:10px;margin:0 0 18px;padding:13px 16px;background:var(--forest-soft);border-left:3px solid var(--forest);font-size:13px;line-height:1.65;color:var(--ink-dim);}
+  .rp-relevance b{color:var(--forest);white-space:nowrap;}
+  .rp-details{margin-top:18px;border-top:1px solid var(--line);}
+  .rp-details summary{display:flex;align-items:center;gap:9px;padding:17px 0 2px;cursor:pointer;list-style:none;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--wine);}
+  .rp-details summary::-webkit-details-marker{display:none;}
+  .rp-details summary::before{content:'+';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid var(--wine);border-radius:50%;font-size:14px;line-height:1;}
+  .rp-details[open] summary::before{content:'−';}
+  .rp-details .rp-body{margin-top:22px;}
+  @media(max-width:900px){.rp-snapshot{grid-template-columns:1fr;}}
+  .project-focus{display:flex;flex-wrap:wrap;gap:8px;margin:-12px 0 30px;}
+  .project-focus span{font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:7px 12px;border:1px solid rgba(31,87,69,0.22);border-radius:3px;color:var(--forest);background:var(--forest-soft);}
+
+  /* ===================== SKILLS ===================== */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:26px;}
+  @media(max-width:820px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:26px 26px;}
+  .skill-card h4{font-family:'Fraunces',serif;font-weight:600;font-size:15px;margin-bottom:16px;color:var(--wine);}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .skill-tags span{font-size:12px;color:var(--ink-dim);border:1px solid var(--line);padding:6px 12px;border-radius:3px;background:var(--panel-alt);}
+
+
+  /* ===================== CONTACT ===================== */
+  .contact-panel{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:52px 46px;text-align:center;}
+  @media(max-width:768px){.contact-panel{padding:36px 22px;}}
+  .contact-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
+  .contact-sub{color:var(--ink-dim);max-width:520px;margin:0 auto 28px;line-height:1.65;font-size:14.5px;}
+  .contact-info{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:28px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-dim);}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
+  .references-note{font-size:11.5px;color:var(--ink-faint);font-style:italic;}
+
+
+  footer{text-align:center;padding:34px 24px 60px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===================== CORPORATE ACTUARIAL THEME ===================== */
+  .rail{background:var(--ink);border-right:0;box-shadow:8px 0 28px rgba(16,42,67,.08);}
+  .rail-seal{border-radius:7px;border-color:#8FC5D0;background:rgba(255,255,255,.05);}
+  .rail-seal::before{border-radius:4px;border-color:rgba(255,255,255,.2);}
+  .rail-seal span,.rail-name{color:#FFF;}
+  .rail-role,.rail-note{color:#AFC0CE;}
+  .rail-link,.rail-link .num{color:#9FB3C3;}
+  .rail-link{border-left-width:2px;padding:10px 12px;border-radius:0 4px 4px 0;}
+  .rail-link:hover{color:#FFF;background:rgba(255,255,255,.05);}
+  .rail-link.active,.rail-link.active .num{color:#FFF;}
+  .rail-link.active{border-left-color:#66B5AE;background:rgba(102,181,174,.12);}
+  .rail-badge{color:#B9E3DE;border-color:rgba(102,181,174,.35);background:rgba(31,107,99,.24);}
+  .rail-badge::before{background:#66B5AE;animation:none;}
+
+  section{padding-top:92px;padding-bottom:82px;border-bottom:1px solid var(--line);}
+  section:nth-of-type(even){background:rgba(255,255,255,.38);}
+  .hero{padding-top:86px;}
+  h1.hero-title{font-size:clamp(40px,5vw,62px);line-height:1.06;}
+  .hero-role{font-style:normal;font-size:clamp(17px,1.7vw,20px);}
+  .hero-sub{max-width:720px;font-size:16px;}
+  .sec-title{margin-bottom:34px;}
+  .sec-title em{font-style:normal;color:var(--forest);}
+  .sec-lead{font-size:15.5px;line-height:1.75;}
+
+  .badge{border-radius:4px;padding:7px 12px;}
+  .role-tag{background:#E7EEF4;}
+  .facts-strip,.ribbon-wrap,.formation-card,.academic-panel,.essai-panel,
+  .research-panel,.skill-card,.contact-panel{border-radius:6px;box-shadow:0 8px 26px rgba(16,42,67,.045);}
+  .formation-card,.research-panel,.skill-card{transition:border-color .2s,box-shadow .2s,transform .2s;}
+  .formation-card:hover,.research-panel:hover,.skill-card:hover{border-color:#B9C9D6;box-shadow:0 12px 30px rgba(16,42,67,.075);transform:translateY(-2px);}
+  .research-panel{border-top:3px solid var(--wine);padding-top:32px;}
+  .rp-body,.essai-panel{gap:36px;}
+  .rp-text p,.essai-body p,.t-list li{font-size:14px;}
+  .rp-tags span,.essai-topics span{border-radius:4px;}
+  .project-focus span{border-radius:4px;font-weight:500;}
+  .skill-card h4{font-size:16px;color:var(--ink);padding-bottom:12px;border-bottom:2px solid var(--wine-soft);}
+  .skill-tags span{background:#F5F8FA;}
+  .contact-panel{background:var(--ink);border-color:var(--ink);color:#FFF;}
+  .contact-panel .contact-sub,.contact-panel .contact-info,.contact-panel .references-note{color:#C3D1DC;}
+  .contact-panel .btn-primary{background:#FFF;color:var(--ink);}
+  .contact-panel .btn-primary:hover{background:#E7F3F1;color:var(--forest);}
+  .contact-panel .btn-ghost{border-color:#5C7285;background:transparent;color:#FFF;}
+  .contact-panel .btn-ghost:hover{border-color:#8FC5D0;color:#B9E3DE;}
+
+  /* Navigation flottante et accueil éditorial */
+  .rail{
+    top:16px;left:50%;bottom:auto;width:min(1180px,calc(100% - 32px));height:68px;
+    transform:translateX(-50%);padding:10px 14px 10px 16px;border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;flex-direction:row;align-items:center;gap:22px;
+    background:rgba(16,42,67,.96);backdrop-filter:blur(14px);
+    box-shadow:0 16px 40px rgba(16,42,67,.18);
+  }
+  .rail-id{margin:0;gap:10px;min-width:max-content;}
+  .rail-seal{width:40px;height:40px;}
+  .rail-name{font-size:15px;margin:0;}
+  .rail-role{display:none;}
+  .rail-index{flex:1;flex-direction:row;align-items:center;justify-content:center;gap:2px;}
+  .rail-link{gap:5px;margin:0;padding:9px 8px;border:0;border-radius:6px;font-size:11.5px;white-space:nowrap;}
+  .rail-link .num{font-size:9px;}
+  .rail-link.active{border:0;background:rgba(102,181,174,.18);color:#FFF;}
+  .rail-foot{margin:0;min-width:max-content;}
+  .rail-badge{margin:0;padding:8px 10px;font-size:9px;}
+  .rail-note{display:none;}
+  .nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:transparent;color:#FFF;font-size:20px;cursor:pointer;}
+
+  .main{margin-left:0;}
+  section{max-width:1180px;margin:0 auto;padding-left:46px;padding-right:46px;scroll-margin-top:100px;}
+  section:nth-of-type(even){background:transparent;}
+  section+section{position:relative;}
+  section+section::before{content:'';position:absolute;top:0;left:46px;right:46px;height:1px;background:linear-gradient(90deg,var(--wine),var(--line) 18%,var(--line) 82%,transparent);}
+
+  .hero{padding-top:132px;padding-bottom:72px;}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:58px;align-items:center;min-height:520px;}
+  .hero-copy{min-width:0;}
+  .hero-eyebrow{color:var(--forest);font-weight:700;margin-bottom:18px;}
+  h1.hero-title{font-size:clamp(48px,6.2vw,78px);letter-spacing:-.035em;margin-bottom:10px;}
+  .hero-role{font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-.01em;color:var(--wine);}
+  .hero-sub{max-width:760px;margin-bottom:25px;}
+  .hero-visual{position:relative;min-height:450px;border-radius:16px;overflow:hidden;padding:34px 34px 88px;background:var(--ink);color:#FFF;box-shadow:0 26px 60px rgba(16,42,67,.2);}
+  .hero-visual::before{content:'';position:absolute;width:310px;height:310px;border:1px solid rgba(143,197,208,.24);border-radius:50%;right:-110px;top:-90px;box-shadow:0 0 0 52px rgba(143,197,208,.045),0 0 0 104px rgba(143,197,208,.025);}
+  .hero-visual::after{content:'HB';position:absolute;right:18px;bottom:-28px;font-family:'Fraunces',serif;font-size:150px;font-weight:600;line-height:1;color:rgba(255,255,255,.035);}
+  .visual-kicker{position:relative;z-index:1;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FC5D0;margin-bottom:52px;}
+  .visual-title{position:relative;z-index:1;font-family:'Fraunces',serif;font-size:29px;line-height:1.15;max-width:270px;margin-bottom:28px;}
+  .visual-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .visual-item{padding:14px;border:1px solid rgba(255,255,255,.13);border-radius:7px;background:rgba(255,255,255,.045);}
+  .visual-item b{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:#66B5AE;margin-bottom:6px;}
+  .visual-item span{font-size:12px;line-height:1.35;color:#D6E0E8;}
+  .visual-status{position:absolute;z-index:1;left:34px;right:34px;bottom:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.13);display:flex;align-items:center;gap:9px;font-size:11px;color:#B9E3DE;}
+  .visual-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#66B5AE;box-shadow:0 0 0 4px rgba(102,181,174,.13);}
+  .facts-strip{margin-top:60px;}
+  .fact-cell{padding:24px;}
+  .fact-num{font-size:30px;}
+  .ribbon-wrap{margin-top:24px;}
+
+  .sec-index{font-size:10.5px;font-weight:700;letter-spacing:.12em;}
+  .sec-title{font-size:clamp(30px,4vw,46px);letter-spacing:-.025em;max-width:780px;}
+  .formation-card,.essai-panel,.research-panel,.skill-card{background:rgba(255,255,255,.92);}
+  .research-panel{margin-bottom:30px;}
+  .rp-title{font-size:clamp(21px,2.4vw,28px);}
+
+  @media(max-width:1080px){
+    .rail{gap:12px;}
+    .rail-link .num{display:none;}
+    .rail-link{padding:9px 6px;font-size:11px;}
+    .rail-badge{display:none;}
+  }
+
+  @media(max-width:980px){
+    .rail{position:fixed;top:10px;width:calc(100% - 20px);height:60px;padding:9px 10px 9px 12px;flex-wrap:nowrap;}
+    .rail-id{flex:1;}
+    .rail-index{display:none;position:absolute;top:68px;left:0;right:0;padding:10px;flex-direction:column;align-items:stretch;background:var(--ink);border-radius:10px;box-shadow:0 18px 35px rgba(16,42,67,.22);}
+    .rail.menu-open .rail-index{display:flex;}
+    .rail-link{padding:12px 14px;font-size:13px;}
+    .rail-link .num{display:inline;font-size:10px;}
+    .rail-foot{display:none;}
+    .nav-toggle{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+    section{padding:74px 24px 56px;scroll-margin-top:82px;}
+    section+section::before{left:24px;right:24px;}
+    .hero{padding-top:104px;}
+    .hero-grid{grid-template-columns:1fr;gap:32px;min-height:0;}
+    .hero-visual{min-height:410px;}
+  }
+  @media(max-width:620px){
+    h1.hero-title{font-size:47px;}
+    .hero-sub{font-size:15px;line-height:1.72;}
+    .hero-visual{padding:26px 26px 84px;min-height:420px;}
+    .visual-kicker{margin-bottom:36px;}
+    .visual-title{font-size:25px;}
+    .visual-status{left:26px;right:26px;bottom:14px;}
+    .facts-strip{margin-top:38px;}
+    .fact-cell{padding:18px 16px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+    html{scroll-behavior:auto;}
+  }
+
+  @media print{
+    .rail{position:static;width:100%;height:auto;border:none;padding:10px 0;}
+    .rail-index,.rail-badge,.rail-note{display:none;}
+    .main{margin-left:0;}
+    section{padding:18px 0;max-width:100%;}
+    .btn,.hero-cta,.contact-links{display:none;}
+    body{background:#fff;}
+    .formation-card,.essai-panel,.skill-card,.contact-panel,.facts-strip,.ribbon-wrap{break-inside:avoid;border:1px solid #ccc;}
+  }
+</style>
+</head>
+<body>
+
+<div class="rail">
+  <div class="rail-id">
+    <div class="rail-seal"><span>HB</span></div>
+    <div>
+      <div class="rail-name">Hamza Bouarga</div>
+      <div class="rail-role">Actuariat &amp; Finance Quantitative<br>Université Laval</div>
+    </div>
+  </div>
+  <ul class="rail-index" id="railIndex">
+    <li><a href="#profil" class="rail-link"><span class="num">§1</span>Profil</a></li>
+    <li><a href="#formation" class="rail-link"><span class="num">§2</span>Formation &amp; ICA</a></li>
+    <li><a href="#essai" class="rail-link"><span class="num">§3</span>Essai ORSA</a></li>
+    <li><a href="#experience" class="rail-link"><span class="num">§4</span>Expériences</a></li>
+    <li><a href="#projets" class="rail-link"><span class="num">§5</span>Projets actuariels</a></li>
+    <li><a href="#competences" class="rail-link"><span class="num">§6</span>Compétences</a></li>
+    <li><a href="#contact" class="rail-link"><span class="num">§7</span>Contact</a></li>
+  </ul>
+  <div class="rail-foot">
+    <div class="rail-badge">Disponible — janvier 2027</div>
+    <div class="rail-note">École d'actuariat<br>Université Laval, Québec</div>
+  </div>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="railIndex">☰</button>
+</div>
+
+<div class="main">
+
+<section class="hero" id="profil">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Finissant à la maîtrise en actuariat · Québec</div>
+      <h1 class="hero-title">Hamza Bouarga</h1>
+      <div class="hero-role">Actuariat IARD · Capital et risques · Modélisation quantitative</div>
+      <p class="hero-sub">
+        Étudiant finissant à la maîtrise en actuariat à l'Université Laval et ingénieur d'État en Actuariat-Finance
+        de l'Institut national de statistique et d'économie appliquée (INSEA), à Rabat, au Maroc. Mon parcours réunit modélisation actuarielle, statistique appliquée et finance quantitative,
+        avec des travaux en tarification IARD, provisionnement, capital, solvabilité et risques financiers.
+        Sur le plan professionnel, j'ai occupé un emploi étudiant en analyse de données au ministère des Relations
+        internationales et de la Francophonie du Québec, réalisé un stage en salle des marchés chez Attijariwafa Bank au Maroc
+        et acquis une première expérience du secteur de l'assurance chez SNTL Assurances au Maroc.
+      </p>
+
+      <div class="badge-row">
+        <span class="badge wine">Disponible dès janvier 2027</span>
+        <span class="badge">Finissant à la maîtrise en actuariat (Université Laval)</span>
+        <span class="badge">Ingénieur d'État en Actuariat-Finance (INSEA)</span>
+        <span class="badge">Examen de synthèse de l'ICA (en cheminement)</span>
+        <span class="badge">Français et anglais professionnels</span>
+      </div>
+
+      <div class="roles-row">
+        <span class="role-tag label">Fonctions ciblées</span>
+        <span class="role-tag">Analyste en actuariat</span>
+        <span class="role-tag">Tarification et provisionnement IARD</span>
+        <span class="role-tag">Actuariat corporatif (capital et risques)</span>
+        <span class="role-tag">Stage en actuariat</span>
+      </div>
+
+      <div class="hero-cta">
+        <a href="Hamza_Bouarga_CV.pdf" class="btn btn-primary" download>Télécharger mon CV ↓</a>
+        <a href="#projets" class="btn btn-ghost">Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+    </div>
+
+    <aside class="hero-visual" aria-label="Principaux domaines actuariels">
+      <div class="visual-kicker">Profil actuariel appliqué</div>
+      <div class="visual-title">Transformer les modèles de risque en analyses utiles à la décision.</div>
+      <div class="visual-grid">
+        <div class="visual-item"><b>01</b><span>Tarification et provisionnement IARD</span></div>
+        <div class="visual-item"><b>02</b><span>Capital, solvabilité et ORSA</span></div>
+        <div class="visual-item"><b>03</b><span>Statistique et science des données</span></div>
+        <div class="visual-item"><b>04</b><span>Risques financiers et simulation</span></div>
+      </div>
+      <div class="visual-status">Disponible pour un stage ou un emploi dès janvier 2027</div>
+    </aside>
+  </div>
+
+  <div class="facts-strip reveal in">
+    <div class="fact-cell"><div class="fact-num">3,64</div><div class="fact-label">Moyenne cumulative (sur 4,33)</div></div>
+    <div class="fact-cell"><div class="fact-num">10</div><div class="fact-label">Projets actuariels et quantitatifs</div></div>
+    <div class="fact-cell"><div class="fact-num">3</div><div class="fact-label">Expériences en assurance, données et marchés</div></div>
+    <div class="fact-cell"><div class="fact-num">FR/EN</div><div class="fact-label">Communication professionnelle</div></div>
+  </div>
+
+  <div class="ribbon-wrap reveal in">
+    <div class="ribbon-title">Trajectoire académique et professionnelle (2022 à 2027)</div>
+    <div class="ribbon">
+      <div class="ribbon-item milestone">
+        <div class="ribbon-dot"></div>
+        <div class="ribbon-date">2022</div>
+        <div class="ribbon-kind">Formation</div>
+        <div class="ribbon-label">Actuariat-Finance<br>INSEA, Rabat</div>
+      </div>
+      <div class="ribbon-item milestone">
+        <div class="ribbon-dot"></div>
+        <div class="ribbon-date">Été 2023</div>
+        <div class="ribbon-kind">Stage de découverte</div>
+        <div class="ribbon-label">Produits et sinistres<br>SNTL Assurances</div>
+      </div>
+      <div class="ribbon-item milestone">
+        <div class="ribbon-dot"></div>
+        <div class="ribbon-date">Été 2024</div>
+        <div class="ribbon-kind">Stage</div>
+        <div class="ribbon-label">Salle des marchés<br>Attijariwafa Bank</div>
+      </div>
+      <div class="ribbon-item milestone">
+        <div class="ribbon-dot"></div>
+        <div class="ribbon-date">Automne 2024</div>
+        <div class="ribbon-kind">Formation</div>
+        <div class="ribbon-label">Maîtrise en actuariat<br>Université Laval</div>
+      </div>
+      <div class="ribbon-item milestone">
+        <div class="ribbon-dot"></div>
+        <div class="ribbon-date">Mai 2025 à janv. 2026</div>
+        <div class="ribbon-kind">Emploi étudiant</div>
+        <div class="ribbon-label">Analyste de données<br>MRIF Québec</div>
+      </div>
+      <div class="ribbon-item milestone">
+        <div class="ribbon-dot"></div>
+        <div class="ribbon-date">Avril 2026</div>
+        <div class="ribbon-kind">Essai de maîtrise</div>
+        <div class="ribbon-label">Scénarios ORSA<br>Travail remis</div>
+      </div>
+      <div class="ribbon-item milestone">
+        <div class="ribbon-dot"></div>
+        <div class="ribbon-date">Janv. 2027</div>
+        <div class="ribbon-kind">Objectif</div>
+        <div class="ribbon-label">Diplomation prévue<br>Université Laval</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formation">
+  <div class="sec-index">§2 (Formation et cheminement ICA)</div>
+  <h2 class="sec-title">Actuariat <em>et</em> finance quantitative</h2>
+
+  <div class="formation-grid">
+    <div class="formation-card reveal">
+      <div class="f-dates">2024 — Janvier 2027</div>
+      <div class="f-title">Maîtrise en Actuariat</div>
+      <div class="f-loc">Université Laval, Québec</div>
+      <ul class="f-list">
+        <li><b>Modélisation du risque :</b> théorie avancée du risque, dépendance et copules, VaR/TVaR, valeurs extrêmes et simulation Monte Carlo.</li>
+        <li><b>Actuariat IARD :</b> modèles fréquence-sévérité, franchises et limites, provisionnement, risque catastrophe et allocation du capital.</li>
+        <li><b>Statistique appliquée :</b> régression, apprentissage statistique, tableaux de fréquences, séries chronologiques et validation des modèles.</li>
+        <li><b>Assurance vie et risques financiers :</b> mathématiques actuarielles vie, produits dérivés, valorisation risque-neutre et analyse quantitative des marchés.</li>
+      </ul>
+    </div>
+    <div class="formation-card alt reveal">
+      <div class="f-dates">2022 — 2025</div>
+      <div class="f-title">Diplôme d'Ingénieur d'État en Actuariat-Finance</div>
+      <div class="f-loc">INSEA, Rabat, Maroc</div>
+      <ul class="f-list">
+        <li>Formation combinant actuariat, finance quantitative, statistique, économétrie et informatique.</li>
+        <li>Tarification et provisionnement des contrats d'assurance, prévoyance, retraite et gestion actif-passif.</li>
+        <li>Modélisation stochastique des risques, valorisation et couverture des produits dérivés, gestion de portefeuille.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="academic-panel reveal">
+    <div class="academic-score">
+      <div class="academic-kicker">Rendement universitaire</div>
+      <div class="academic-gpa"><strong>3,64</strong><span>/ 4,33</span></div>
+      <p>Moyenne cumulative de deuxième cycle à l'Université Laval.</p>
+      <div class="gpa-track" role="img" aria-label="Moyenne cumulative de 3,64 sur 4,33">
+        <div class="gpa-fill"></div>
+      </div>
+      <div class="gpa-scale"><span>0</span><span>4,33</span></div>
+    </div>
+    <div class="academic-details">
+      <div class="academic-metrics">
+        <div class="academic-metric"><strong>3,84</strong><span>Moyenne de la dernière session</span></div>
+        <div class="academic-metric"><strong>6</strong><span>Cours réussis avec A-, A ou A+</span></div>
+        <div class="academic-metric"><strong>42</strong><span>Crédits de deuxième cycle réussis</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ica-track reveal">
+    <div class="ica-head-title">Cheminement professionnel (ICA)</div>
+    <div class="ica-bar-track"><div class="ica-bar-fill"></div></div>
+    <div class="ica-labels">
+      <div><div class="t">Formation</div><div class="s">ULaval + INSEA</div></div>
+      <div><div class="t">Essai de maîtrise</div><div class="s">Remis avril 2026</div></div>
+      <div><div class="t">Examen de synthèse</div><div class="s">En cheminement</div></div>
+      <div><div class="t">AICA</div><div class="s">Première désignation</div></div>
+      <div><div class="t">FICA</div><div class="s">Étape suivante</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="essai">
+  <div class="sec-index">§3 (Essai de maîtrise)</div>
+  <h2 class="sec-title">Scénarios <em>ORSA</em> et science des données</h2>
+
+  <div class="essai-panel reveal">
+    <div>
+      <div class="essai-chapter">Assurance de personnes (contexte prudentiel québécois)</div>
+      <div class="essai-title">Construction des scénarios ORSA : apport des méthodes d'analyse de données</div>
+      <div class="essai-meta">
+        <div><b>Direction :</b> Isabelle Larouche, FSA, FICA, professeure agrégée à l'École d'actuariat</div>
+        <div><b>Expertise :</b> solvabilité, normes applicables aux assureurs et gestion des risques; ancienne directrice de l'actuariat et du développement des normes à l'AMF</div>
+        <div><b>Remis le :</b> 30 avril 2026</div>
+        <div><b>Cadre :</b> AMF, ESCAP et évaluation prospective de la solvabilité</div>
+        <div><b>Cas d'application :</b> risque actions d'un assureur de personnes</div>
+      </div>
+      <div class="essai-thesis">Passer de chocs étudiés isolément à des configurations multivariées cohérentes, tout en conservant le jugement actuariel au centre de la décision.</div>
+    </div>
+    <div class="essai-body">
+      <div class="essai-subhead">Question traitée</div>
+      <p>Comment construire des scénarios économiques et adverses suffisamment cohérents pour évaluer la solvabilité future d'un assureur, sans faire reposer toute leur calibration sur des chocs isolés ou sur le seul jugement expert?</p>
+      <p>L'essai analyse un cadre applicable au risque actions et organise l'apport de l'analyse de données autour de trois décisions du processus ORSA.</p>
+
+      <div class="essai-axes">
+        <div class="essai-axis">
+          <div class="essai-axis-num">01 (Structurer)</div>
+          <div class="essai-axis-title">Identifier les régimes de marché</div>
+          <p>ACP, classification hiérarchique et k-moyennes pour regrouper des configurations économiques cohérentes.</p>
+        </div>
+        <div class="essai-axis">
+          <div class="essai-axis-num">02 (Calibrer)</div>
+          <div class="essai-axis-title">Mesurer les chocs extrêmes</div>
+          <p>Théorie des valeurs extrêmes, POT et GPD pour mieux représenter la sévérité de la queue.</p>
+        </div>
+        <div class="essai-axis">
+          <div class="essai-axis-num">03 (Prioriser)</div>
+          <div class="essai-axis-title">Repérer les scénarios critiques</div>
+          <p>Arbres et forêts aléatoires pour identifier les interactions associées à une dégradation de la solvabilité.</p>
+        </div>
+      </div>
+
+      <div class="essai-insurer">
+        <b>Apport au processus ORSA</b>
+        <p>Le cadre structure des scénarios cohérents, traçables et adaptés au profil de risque étudié. Il facilite la gouvernance ORSA, la justification des hypothèses auprès de l'AMF et le repérage des combinaisons de facteurs susceptibles de fragiliser le capital.</p>
+      </div>
+
+      <p class="essai-limit"><b>Positionnement du travail :</b> il s'agit d'un cadre méthodologique et prudentiel, et non d'une validation empirique sur les données internes d'un assureur. Les méthodes complètent le jugement actuariel; leur utilisation reste conditionnelle à la qualité des données, à la stabilité des modèles et à l'interprétabilité des résultats.</p>
+
+      <div class="essai-topics">
+        <span>ORSA</span><span>AMF / ESCAP</span><span>Risque actions</span><span>Régimes de marché</span>
+        <span>Valeurs extrêmes</span><span>Arbres et forêts aléatoires</span><span>Gouvernance des modèles</span>
+      </div>
+      <a href="Essai_Hamza_Bouarga_ORSA.pdf" class="essai-link" target="_blank" rel="noopener">Lire l'essai complet (PDF) →</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-index">§4 (Expériences professionnelles)</div>
+  <h2 class="sec-title">Expériences <em>professionnelles</em></h2>
+
+  <div class="timeline reveal">
+    <div class="t-item">
+      <div class="t-date">Mai 2025 — Janvier 2026</div>
+      <div class="t-title">Analyste de données <span class="t-status">Emploi étudiant</span></div>
+      <div class="t-org">Ministère des Relations internationales et de la Francophonie du Québec (MRIF), Québec</div>
+      <ul class="t-list">
+        <li>Produire des analyses et des notes de synthèse destinées aux décideurs à l'aide de modèles économétriques et prédictifs (R, XGBoost, Random Forest).</li>
+        <li>Renforcer les méthodologies d'analyse et les contrôles de qualité appliqués à des données critiques.</li>
+        <li>Automatiser des analyses quantitatives et traduire leurs résultats pour des parties prenantes non techniques.</li>
+      </ul>
+    </div>
+    <div class="t-item">
+      <div class="t-date">Été 2024</div>
+      <div class="t-title">Stagiaire, salle de marché — Trading Desk</div>
+      <div class="t-org">Attijariwafa Bank, Casablanca, Maroc</div>
+      <ul class="t-list">
+        <li>Développer en VBA un outil de valorisation obligataire et d'automatisation des calculs.</li>
+        <li>Analyser la courbe des taux interbancaires et les sensibilités obligataires (duration, convexité).</li>
+        <li>Préparer des rapports sur les taux, les devises et les courbes, puis contribuer à des scénarios de stress sur les taux d'intérêt.</li>
+        <li>Collaborer avec le front office et le middle office à la validation des positions.</li>
+      </ul>
+    </div>
+    <div class="t-item">
+      <div class="t-date">Juillet 2023 — Août 2023</div>
+      <div class="t-title">Stage de découverte en assurance</div>
+      <div class="t-org">SNTL Assurances, Rabat, Maroc</div>
+      <ul class="t-list">
+        <li>Découvrir les principales familles de produits d'assurance et les garanties qui leur sont associées.</li>
+        <li>Se familiariser avec la gestion des sinistres et les principales étapes de traitement des dossiers.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="sec-index">§5 (Projets actuariels et quantitatifs)</div>
+  <h2 class="sec-title">De la théorie à la <em>décision en assurance</em></h2>
+  <p class="sec-lead">Une sélection de projets en tarification et sinistres, provisionnement, risque catastrophique, capital, prévision et risques financiers. Chaque projet présente le problème traité, l'approche retenue et les décisions actuarielles auxquelles il contribue.</p>
+  <div class="project-focus reveal" aria-label="Domaines actuariels couverts">
+    <span>Tarification IARD</span><span>Provisionnement</span><span>Capital et solvabilité</span>
+    <span>Risque catastrophique</span><span>ORSA et gouvernance</span><span>Prévision et données</span>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-6115 (Mathématiques actuarielles IARD I)</div>
+    <div class="rp-title">Modélisation de la sévérité et de la fréquence des sinistres en assurance habitation</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail individuel</div>
+      <div><b>Données :</b> montants de sinistres Property et fréquences par comté au Wisconsin</div>
+      <div><b>Implémentation :</b> estimation, diagnostics et tests d'adéquation en R</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Sélectionner des distributions adaptées aux montants et aux fréquences de sinistres habitation.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Estimation par maximum de vraisemblance et comparaison des modèles par diagnostics graphiques, AIC, BIC, KS, Anderson-Darling et χ².</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>La GB2 est retenue pour la sévérité; la binomiale négative ajuste adéquatement les fréquences de vandalisme et de foudre.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Sélection de modèles fréquence-sévérité, tarification IARD, projection des coûts de sinistres et validation statistique.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>La tarification d'un portefeuille habitation exige de représenter séparément le coût et le nombre des sinistres. Le projet compare plusieurs distributions afin de retenir des modèles statistiquement compatibles avec les données observées.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Pour la sévérité, comparaison des lois Pareto, log-normale, Gamma et GB2. Pour la fréquence, ajustement des lois Poisson, binomiale négative et de leurs versions zéro-modifiées aux périls vandalisme et foudre, avec regroupement des classes avant les tests du χ².</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement R complet de l'estimation par maximum de vraisemblance, des graphiques P-P et Q-Q, des critères AIC/BIC et des tests de Kolmogorov-Smirnov, Anderson-Darling et Pearson.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>La GB2 obtient les plus faibles critères AIC (8 411,402) et BIC (8 427,398), et demeure la seule distribution de sévérité non rejetée par les tests KS et Anderson-Darling. Pour la fréquence, la loi de Poisson est rejetée pour le vandalisme, tandis que la binomiale négative est adéquate pour les deux périls.</p>
+
+        <div class="rp-tags">
+          <span>Fréquence-sévérité</span><span>GB2</span><span>Binomiale négative</span>
+          <span>Maximum de vraisemblance</span><span>Tests d'adéquation</span><span>R</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+<svg viewBox="0 0 340 235" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Modèles retenus pour la sévérité et la fréquence">
+          <text x="18" y="22" font-family="JetBrains Mono,monospace" font-size="9.5" font-weight="600" fill="var(--wine)">DÉCISIONS DE MODÉLISATION</text>
+          <rect x="12" y="42" width="316" height="68" rx="3" fill="var(--forest-soft)"/>
+          <g font-family="Inter,sans-serif">
+            <text x="20" y="63" font-size="8.2" fill="var(--ink-dim)">Sévérité</text>
+            <text x="20" y="85" font-family="JetBrains Mono,monospace" font-size="12" font-weight="600" fill="var(--forest)">GB2 RETENUE</text>
+            <text x="20" y="101" font-size="8" fill="var(--ink-dim)">AIC inférieur de 44,3 au modèle suivant</text>
+          </g>
+          <rect x="12" y="126" width="316" height="68" rx="3" fill="var(--wine-soft)"/>
+          <g font-family="Inter,sans-serif">
+            <text x="20" y="147" font-size="8.2" fill="var(--ink-dim)">Fréquence (vandalisme et foudre)</text>
+            <text x="20" y="169" font-family="JetBrains Mono,monospace" font-size="11.5" font-weight="600" fill="var(--wine)">BINOMIALE NÉGATIVE RETENUE</text>
+            <text x="20" y="185" font-size="8" fill="var(--ink-dim)">Dispersion mieux représentée que par Poisson</text>
+          </g>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> Résultats de sélection directement exploitables. La GB2 domine les autres lois de sévérité (écart d'AIC de 44,3 avec la suivante), tandis que la binomiale négative représente adéquatement les fréquences des deux périls.</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-6115 (Mathématiques actuarielles IARD I)</div>
+    <div class="rp-title">Modélisation des montants de sinistres sous franchises et limites d'assurance</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail individuel</div>
+      <div><b>Données :</b> sinistres habitation au Québec et en Ontario</div>
+      <div><b>Implémentation :</b> estimation paramétrique, noyaux et analyse de survie en R</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Estimer la sévérité lorsque les paiements sont modifiés par une franchise ou censurés par une limite contractuelle.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Maximum de vraisemblance conditionnelle, estimateurs par noyaux implémentés sans fonction prédéfinie, et estimateurs Kaplan-Meier et Nelson-Aalen.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>Malgré la censure, les deux méthodes estiment un coût moyen à moins de 2,6 % d'écart (55 329 contre 56 763).</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Tarification des franchises et limites, modélisation de la sévérité, traitement de la censure et estimation du coût ultime.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>Les montants observés ne correspondent pas toujours aux pertes réelles. Une franchise tronque les petits sinistres et une limite de couverture censure les pertes élevées, ce qui exige des méthodes adaptées pour estimer correctement leur distribution.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Ajustement conditionnel des lois Pareto, log-normale et GB2 aux paiements avec franchises. Estimation non paramétrique par noyaux gaussien et Epanechnikov, puis analyse des montants censurés avec Kaplan-Meier, Nelson-Aalen et la variance de Greenwood.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement R complet des vraisemblances conditionnelles, de la matrice d'information de Fisher, des deux estimateurs par noyaux sans utiliser la fonction density, et des calculs de survie sous censure.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Kaplan-Meier et Nelson-Aalen donnent des estimations presque identiques de P(X &gt; 1 500), soit 0,8639 et 0,8653. Les coûts moyens obtenus sont de 55 329 et 56 763, un écart inférieur à 2,6 % qui montre la stabilité de l'estimation malgré la censure.</p>
+
+        <div class="rp-tags">
+          <span>Franchises et limites</span><span>Données censurées</span><span>Kaplan-Meier</span>
+          <span>Nelson-Aalen</span><span>Estimation par noyaux</span><span>R</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+<svg viewBox="0 0 340 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stabilité du coût moyen estimé sous censure">
+          <text x="18" y="22" font-family="JetBrains Mono,monospace" font-size="9.5" font-weight="600" fill="var(--wine)">COÛT MOYEN SOUS CENSURE</text>
+          <g font-family="Inter,sans-serif" font-size="8.5" fill="var(--ink-dim)">
+            <text x="18" y="55">Kaplan-Meier</text><text x="300" y="55" text-anchor="end" font-family="JetBrains Mono,monospace">55 329</text>
+            <text x="18" y="96">Nelson-Aalen</text><text x="300" y="96" text-anchor="end" font-family="JetBrains Mono,monospace">56 763</text>
+          </g>
+          <rect x="18" y="65" width="288" height="12" rx="2" fill="var(--wine-soft)"/>
+          <rect x="18" y="106" width="296" height="12" rx="2" fill="var(--forest-soft)"/>
+          <line x1="18" y1="139" x2="322" y2="139" stroke="var(--line)"/>
+          <rect x="12" y="155" width="316" height="42" rx="3" fill="var(--forest-soft)"/>
+          <text x="170" y="174" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" font-weight="600" fill="var(--forest)">Écart inférieur à 2,6 %</text>
+          <text x="170" y="189" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.2" fill="var(--ink-dim)">Estimation stable malgré les limites d'assurance</text>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> Les deux méthodes donnent des coûts moyens à moins de 2,6 % d'écart. Cette proximité est plus utile que les statistiques intermédiaires : elle montre la robustesse de l'estimation lorsque les pertes élevées sont censurées.</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-7100 (Modèles mathématiques en actuariat IARD)</div>
+    <div class="rp-title">Méthodes agrégées de provisionnement avec dépendance entre couvertures</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail réalisé en équipe</div>
+      <div><b>Direction :</b> Marie-Pier Côté, Ph.D., professeure à l'École d'actuariat</div>
+      <div><b>Base :</b> Shi &amp; Frees (2011), <em>ASTIN Bulletin</em> ; Côté, Genest &amp; Abdallah (2016)</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Évaluer l'effet de la dépendance entre deux couvertures sur les provisions et le capital de risque.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Modèles GLM gamma, copule de Student, simulations Monte Carlo et bootstrap paramétrique en R.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>Une dépendance faible mais réelle relève systématiquement les estimations de VaR et de TVaR.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Provisionnement IARD, agrégation des couvertures, IFRS 17 et suffisance du capital.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>Deux couvertures d'assurance (Accident Benefits et Disability Income) évoluent rarement de façon indépendante. Ce travail modélise cette dépendance dans le provisionnement, plutôt que de la supposer nulle comme dans le Chain-Ladder classique, afin d'en mesurer l'effet sur la réserve et le capital de risque.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Ajustement d'un modèle de régression (GLM gamma) par couverture, puis d'une copule captant la dépendance résiduelle entre les deux. Les provisions sont ensuite simulées par Monte Carlo, avec et sans incertitude des paramètres, et comparées aux méthodes de référence (Mack, Bootstrap Chain-Ladder).</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement R complet du nettoyage des données, de l'ajustement des modèles, des simulations et du bootstrap, à partir du cadre méthodologique de Shi and Frees (2011).</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>La dépendance entre les deux couvertures est faible mais réelle. Elle ne change pas la forme générale de la distribution des provisions, mais relève systématiquement les mesures de capital de risque (VaR et TVaR) par rapport au modèle d'indépendance.</p>
+
+        <div class="rp-tags">
+          <span>Triangles de développement</span><span>Copule Student</span><span>GLM Gamma</span>
+          <span>Bootstrap paramétrique</span><span>VaR / TVaR</span><span>Provisionnement IARD</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-7100 (Modèles mathématiques en actuariat IARD)</div>
+    <div class="rp-title">Théorie des valeurs extrêmes appliquée aux pertes assurées de catastrophes naturelles</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail réalisé en équipe</div>
+      <div><b>Direction :</b> Marie-Pier Côté, Ph.D., professeure à l'École d'actuariat</div>
+      <div><b>Base :</b> Données Swiss Re Institute (2013–2017) ; Coles (2001), McNeil et al. (2015)</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Quantifier les pertes catastrophiques rares afin d'évaluer le capital requis et les besoins de réassurance.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Analyse de données Swiss Re et ajustement en R de modèles GEV, GPD et Poisson.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>VaR 95 % ≈ 2,1 G USD, TVaR ≈ 6,7 G USD et niveau de retour à 100 ans ≈ 5,86 G USD.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Risque catastrophique, capital de solvabilité et réassurance en excédent de sinistre.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>Quantifier les pertes catastrophiques rares, là où les modèles usuels décrivent mal la queue de distribution, afin d'estimer le capital requis et les niveaux de retour.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Application des modèles GEV et GPD à des pertes assurées de Swiss Re, avec validation des séries, sélection du seuil et modélisation de la fréquence des dépassements par un processus de Poisson.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement R complet sur données réelles, incluant le nettoyage, les tests de stationnarité, l'ajustement GEV/GPD, le processus de Poisson et le calcul de la VaR/TVaR.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Le paramètre de forme ξ̂ = 0,60 (GEV) situe les pertes dans le domaine de Fréchet (queue lourde et variance infinie). Le seuil u = 960 M USD (GPD) donne ξ̂ = 0,64, cohérent avec le GEV. La VaR à 95 % atteint ≈ 2,1 milliards USD, la TVaR ≈ 6,7 milliards et le niveau de retour à 100 ans ≈ 5 856 M USD.</p>
+
+        <div class="rp-tags">
+          <span>Théorie des valeurs extrêmes</span><span>Loi GEV</span><span>Loi GPD</span>
+          <span>Processus de Poisson</span><span>VaR / TVaR</span><span>Pertes catastrophiques</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+<svg viewBox="0 0 340 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesures de risque catastrophique estimées">
+          <text x="18" y="22" font-family="JetBrains Mono,monospace" font-size="9.5" font-weight="600" fill="var(--wine)">RISQUE CATASTROPHIQUE ESTIMÉ</text>
+          <g font-family="Inter,sans-serif">
+            <text x="18" y="54" font-size="8.5" fill="var(--ink-dim)">VaR à 95 %</text>
+            <text x="318" y="54" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="12" fill="var(--ink)">2,1 G USD</text>
+            <line x1="18" y1="65" x2="322" y2="65" stroke="var(--line)"/>
+            <text x="18" y="91" font-size="8.5" fill="var(--ink-dim)">TVaR à 95 %</text>
+            <text x="318" y="91" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="12" fill="var(--wine)">6,7 G USD</text>
+            <line x1="18" y1="102" x2="322" y2="102" stroke="var(--line)"/>
+            <text x="18" y="128" font-size="8.5" fill="var(--ink-dim)">Niveau de retour à 100 ans</text>
+            <text x="318" y="128" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="12" fill="var(--forest)">5,86 G USD</text>
+          </g>
+          <rect x="12" y="153" width="316" height="65" rx="3" fill="var(--forest-soft)"/>
+          <g font-family="Inter,sans-serif" fill="var(--forest)">
+            <text x="20" y="174" font-size="8.5" font-weight="600">DIAGNOSTIC DE QUEUE</text>
+            <text x="20" y="193" font-size="8.2">ξ̂ GEV = 0,60 et ξ̂ GPD = 0,64</text>
+            <text x="20" y="208" font-size="8.2">Queue lourde confirmée par deux approches.</text>
+          </g>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> Mesures directement utiles au capital et à la réassurance, reproduites à partir du rapport. La TVaR, nettement supérieure à la VaR, met en évidence le coût potentiel des événements situés dans l'extrême queue.</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-7102 (Modèles avancés de la théorie du risque)</div>
+    <div class="rp-title">Allocation de capital basée sur la TVaR pour portefeuilles de risques dépendants</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail réalisé en équipe</div>
+      <div><b>Direction :</b> Hélène Cossette, Ph.D., professeure à l'École d'actuariat</div>
+      <div><b>Base :</b> Cossette, Mailhot &amp; Marceau (2012), <em>Insurance: Mathematics and Economics</em></div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Mesurer le capital économique d'un portefeuille de risques dépendants et l'allouer entre ses composantes.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Développement intégral en R des calculs VaR/TVaR, de l'algorithme de Panjer et de la dépendance par copule de Frank.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>Lorsque la dépendance augmente, le bénéfice de diversification recule d'environ 37 % (de 66,01 à 41,57).</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Capital économique, diversification et gestion agrégée des risques.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>Déterminer le capital économique requis pour un portefeuille de risques dépendants, puis l'allouer équitablement entre les différentes composantes du portefeuille.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Modélisation de la dépendance par une copule de Frank, calcul de la TVaR du portefeuille et attribution des contributions individuelles. L'analyse combine lois composées multivariées, algorithme de Panjer et optimisation numérique.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement R complet de la loi jointe, de l'algorithme de Panjer, de l'optimisation de la VaR et de l'agrégation des contributions TVaR, sans réutilisation du code des auteurs.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Le bénéfice de mutualisation passe de 66,01 à 41,57 lorsque la dépendance augmente, soit une diminution d'environ 37 %. Une hypothèse de dépendance trop faible peut donc surestimer matériellement l'avantage de diversification.</p>
+
+        <div class="rp-tags">
+          <span>TVaR</span><span>Copule de Frank</span><span>Lois composées multivariées</span>
+          <span>Allocation de capital</span><span>Mélange d'Erlang</span><span>Algorithme de Panjer</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+        <svg viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg">
+          <line x1="50" y1="20" x2="50" y2="210" stroke="#8A93A0" stroke-width="1"/>
+          <line x1="50" y1="210" x2="310" y2="210" stroke="#8A93A0" stroke-width="1"/>
+
+          <line x1="50" y1="164" x2="310" y2="164" stroke="#E3DCC7" stroke-width="1"/>
+          <line x1="50" y1="118" x2="310" y2="118" stroke="#E3DCC7" stroke-width="1"/>
+          <line x1="50" y1="72" x2="310" y2="72" stroke="#E3DCC7" stroke-width="1"/>
+          <line x1="50" y1="26" x2="310" y2="26" stroke="#E3DCC7" stroke-width="1"/>
+
+          <text x="42" y="214" text-anchor="end" font-size="9.5" fill="#5B6778" font-family="Inter,sans-serif">0</text>
+          <text x="42" y="168" text-anchor="end" font-size="9.5" fill="#5B6778" font-family="Inter,sans-serif">20</text>
+          <text x="42" y="122" text-anchor="end" font-size="9.5" fill="#5B6778" font-family="Inter,sans-serif">40</text>
+          <text x="42" y="76" text-anchor="end" font-size="9.5" fill="#5B6778" font-family="Inter,sans-serif">60</text>
+          <text x="42" y="30" text-anchor="end" font-size="9.5" fill="#5B6778" font-family="Inter,sans-serif">80</text>
+
+          <text x="10" y="120" text-anchor="middle" font-size="9.5" fill="#5B6778" font-family="Inter,sans-serif" transform="rotate(-90 14 120)">B&#954; (unités de l'exemple)</text>
+
+          <line x1="90" y1="210" x2="90" y2="216" stroke="#8A93A0" stroke-width="1"/>
+          <line x1="180" y1="210" x2="180" y2="216" stroke="#8A93A0" stroke-width="1"/>
+          <line x1="270" y1="210" x2="270" y2="216" stroke="#8A93A0" stroke-width="1"/>
+          <text x="90" y="228" text-anchor="middle" font-size="10" fill="var(--ink)" font-family="Inter,sans-serif">−20</text>
+          <text x="180" y="228" text-anchor="middle" font-size="10" fill="var(--ink)" font-family="Inter,sans-serif">0</text>
+          <text x="270" y="228" text-anchor="middle" font-size="10" fill="var(--ink)" font-family="Inter,sans-serif">20</text>
+          <text x="180" y="246" text-anchor="middle" font-size="10" fill="#5B6778" font-family="Inter,sans-serif">Paramètre de dépendance α (copule de Frank)</text>
+
+          <line x1="90" y1="49.3" x2="180" y2="80.9" stroke="#174A6E" stroke-width="1.6"/>
+          <line x1="180" y1="80.9" x2="270" y2="106.9" stroke="#174A6E" stroke-width="1.6"/>
+
+          <circle cx="90" cy="49.3" r="3.2" fill="#174A6E"/>
+          <circle cx="180" cy="80.9" r="3.2" fill="#174A6E"/>
+          <circle cx="270" cy="106.9" r="3.2" fill="#174A6E"/>
+
+          <text x="90" y="39" text-anchor="middle" font-size="10" fill="var(--ink)" font-family="JetBrains Mono,monospace">66,01</text>
+          <text x="180" y="71" text-anchor="middle" font-size="10" fill="var(--ink)" font-family="JetBrains Mono,monospace">53,48</text>
+          <text x="270" y="97" text-anchor="middle" font-size="10" fill="var(--ink)" font-family="JetBrains Mono,monospace">41,57</text>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> Effet de la dépendance sur la diversification au seuil TVaR de 99,5 %. Le bénéfice de mutualisation diminue d'environ 37 % dans les scénarios étudiés, résultat reproduit par le code R et conforme à l'article source.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">STT-7635 (Séries chronologiques)</div>
+    <div class="rp-title">Prévision de séries mensuelles avec saisonnalité et comparaison de modèles</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail individuel</div>
+      <div><b>Données :</b> dépenses mensuelles en restauration au Canada (1989 à 2025)</div>
+      <div><b>Implémentation :</b> analyse, validation et prévisions en R</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Prévoir une série mensuelle marquée par une tendance, une saisonnalité annuelle et une variance croissante.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Comparaison d'ARIMA, ETS, TBATS, STL et d'une combinaison de modèles avec validation sur un échantillon test.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>La combinaison réduit le RMSE hors échantillon d'environ 3,8 % par rapport au meilleur modèle individuel.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Prévision des volumes de sinistres, primes, dépenses, flux de trésorerie et besoins opérationnels soumis à la saisonnalité.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème statistique</div>
+        <p>La série présente une croissance de long terme, un cycle annuel prononcé et une variabilité qui augmente avec son niveau. Ces caractéristiques doivent être corrigées avant de produire des prévisions fiables.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Transformation Box-Cox (λ = -0,291), tests ADF et KPSS, différenciations ordinaire et saisonnière, puis diagnostics ACF/PACF. Plusieurs modèles ARIMA sont comparés à ETS, TBATS et STL, avant une validation sur les observations de 2023 à 2025.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement R complet de la préparation de la série, des diagnostics de stationnarité, de l'ajustement des modèles, des prévisions à 24 mois et de la comparaison hors échantillon.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Sur l'échantillon test, la combinaison ARIMA, ETS, TBATS et STL obtient un RMSE de 0,06415, contre 0,06670 pour le meilleur modèle individuel (TBATS). L'agrégation réduit ainsi l'erreur de prévision d'environ 3,8 %.</p>
+
+        <div class="rp-tags">
+          <span>ARIMA saisonnier</span><span>ETS</span><span>TBATS</span><span>STL</span>
+          <span>Box-Cox</span><span>Validation train/test</span><span>R</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+        <svg viewBox="0 0 340 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison des RMSE hors échantillon des modèles de prévision">
+          <text x="18" y="22" font-family="JetBrains Mono,monospace" font-size="9.5" font-weight="600" fill="var(--wine)">RMSE SUR L'ÉCHANTILLON TEST</text>
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="150" y1="42" x2="150" y2="232"/>
+            <line x1="225" y1="42" x2="225" y2="232"/>
+            <line x1="300" y1="42" x2="300" y2="232"/>
+          </g>
+          <g font-family="JetBrains Mono,monospace" font-size="8" fill="var(--ink-faint)" text-anchor="middle">
+            <text x="150" y="246">0,00</text><text x="225" y="246">0,07</text><text x="300" y="246">0,14</text>
+          </g>
+          <g font-family="Inter,sans-serif" font-size="9" fill="var(--ink)">
+            <text x="18" y="66">ETS</text><text x="18" y="102">ARIMA</text><text x="18" y="138">STL + ETS</text><text x="18" y="174">TBATS</text><text x="18" y="210" font-weight="600" fill="var(--forest)">Combinaison</text>
+          </g>
+          <g fill="var(--wine-soft)">
+            <rect x="150" y="53" width="79" height="17" rx="2"/><rect x="150" y="89" width="86" height="17" rx="2"/><rect x="150" y="125" width="147" height="17" rx="2"/><rect x="150" y="161" width="71" height="17" rx="2"/>
+          </g>
+          <rect x="150" y="197" width="69" height="17" rx="2" fill="var(--forest)"/>
+          <g font-family="JetBrains Mono,monospace" font-size="8.3" fill="var(--ink)">
+            <text x="235" y="65">0,07341</text><text x="242" y="101">0,08066</text><text x="301" y="137">0,13732</text><text x="227" y="173">0,06670</text><text x="225" y="209" fill="var(--forest)" font-weight="600">0,06415</text>
+          </g>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> Comparaison hors échantillon reproduite à partir du rapport. La combinaison moyenne des prévisions ARIMA, ETS, TBATS et STL produit l'erreur quadratique moyenne la plus faible.</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-7102 (Modèles avancés de la théorie du risque)</div>
+    <div class="rp-title">Assurance collaborative avec protection stop-loss et partitionnement par équipes</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail réalisé en équipe</div>
+      <div><b>Direction :</b> Hélène Cossette, Ph.D., professeure à l'École d'actuariat</div>
+      <div><b>Base :</b> Denuit &amp; Robert (2021), <em>North American Actuarial Journal</em></div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Concevoir un mécanisme P2P dont les contributions restent fixées à l'avance, sans appel de fonds supplémentaire.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Simulation en R de 400 participants et 50 000 scénarios, puis calibration de la protection stop-loss.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>La rétention calibrée à 15,88 couvre environ 84 % des pertes agrégées simulées; le stop-loss intervient dans la queue restante.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Tarification de produits collaboratifs, partage du risque et structuration d'une protection de réassurance.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>Un système d'assurance collaborative (P2P) doit garantir que les contributions restent fixées à l'avance, sans appel de fonds supplémentaire. Denuit &amp; Robert (2021) répondent à cette contrainte par un contrat stop-loss combiné à un remboursement de fin de période. Ce travail redémontre et vérifie numériquement ce mécanisme.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Calibration de la rétention stop-loss et des contributions individuelles sur une communauté simulée de 400 participants répartis en trois classes de risque. Le mécanisme est vérifié par simulation Monte Carlo et estimation des pertes conditionnelles.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>L'article ne fournit aucun code. Le développement R couvre la simulation de la communauté, l'estimation loess de E[X<sub>i</sub>|S=s] et la résolution numérique de l'équation de rétention.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Les fonctions E[X<sub>i</sub>|S=s] sont croissantes pour les trois groupes, confirmant l'optimalité de Pareto. Le niveau de rétention w ≈ 15,88 correspond à F<sub>S</sub>(w) ≈ 84,05 % : la communauté absorbe environ 84 % des pertes agrégées simulées et transfère la queue restante au stop-loss.</p>
+
+        <div class="rp-tags">
+          <span>Assurance collaborative (P2P)</span><span>Partage conditionnel du risque</span><span>Protection stop-loss</span>
+          <span>Loi de Poisson composée</span><span>Optimalité de Pareto</span><span>Simulation Monte Carlo</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-7102 (Modèles avancés de la théorie du risque)</div>
+    <div class="rp-title">Représentation stochastique des copules FGM à l'aide de variables de Bernoulli multivariées</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail réalisé en équipe</div>
+      <div><b>Direction :</b> Hélène Cossette, Ph.D., professeure à l'École d'actuariat</div>
+      <div><b>Base :</b> Blier-Wong, Cossette &amp; Marceau (2022), <em>Computational Statistics &amp; Data Analysis</em></div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Modéliser la dépendance entre de nombreux risques sans multiplier les paramètres à estimer.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Programmation intégrale en R des algorithmes de simulation FGM et Markov-Bernoulli.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>La simulation valide une représentation parcimonieuse : un seul paramètre suffit à reproduire la dépendance théorique étudiée.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Simulation agrégée, hypothèses de dépendance, capital de solvabilité et ORSA.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>Modéliser la dépendance entre plusieurs branches, périls ou régions sans multiplier rapidement le nombre de paramètres. L'objectif est de conserver un modèle interprétable et simulable lorsque la dimension du portefeuille augmente.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Représentation des copules FGM par des variables de Bernoulli multivariées, puis utilisation d'une structure Markov-Bernoulli. Cette construction ramène la dépendance à un seul coefficient α, interprétable comme son intensité entre risques voisins.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement R complet des algorithmes d'échantillonnage, de la simulation du vecteur latent de Bernoulli et de sa conversion en copule FGM. Les figures proviennent directement des simulations exécutées.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Les simulations retrouvent le paramètre théorique θ₁₂ = α et confirment l'inversion du sens de la dépendance selon le signe de α. Le modèle permet ainsi de simuler plusieurs risques avec un paramétrage beaucoup plus parcimonieux.</p>
+
+        <div class="rp-tags">
+          <span>Copules FGM</span><span>Bernoulli multivariée</span><span>Représentation stochastique</span>
+          <span>Processus de Markov-Bernoulli</span><span>Échantillonnage stochastique</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">ACT-7103 (Mathématiques des risques financiers)</div>
+    <div class="rp-title">Calibration de la structure de volatilité par arbres trinomiaux implicites</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail individuel</div>
+      <div><b>Références :</b> Derman, Kani &amp; Chriss (1996) ; Derman &amp; Kani (1994)</div>
+      <div><b>Implémentation :</b> simulations numériques en Python</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Construire un modèle d'options qui reproduit le smile et la structure par terme de la volatilité observée sur le marché.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Construction et calibration en Python d'un arbre trinomial implicite à trois périodes, sous contraintes d'absence d'arbitrage.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>L'arbre calibré respecte les contraintes d'absence d'arbitrage et reproduit une volatilité locale décroissante (9,5 % puis 9,3 %).</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Valorisation et couverture de garanties financières intégrées aux rentes variables, aux fonds distincts et aux produits d'assurance liés aux marchés.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème actuariel</div>
+        <p>Le modèle de Black-Scholes suppose une volatilité constante et ne reproduit pas le smile observé selon le prix d'exercice et l'échéance. L'arbre implicite vise à construire une dynamique risque-neutre cohérente avec les prix d'options disponibles.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Construction d'un espace d'état trinomial, calibration des probabilités à partir des prix de calls et de puts, calcul des prix d'Arrow-Debreu et reconstitution de la volatilité locale. Les probabilités sont contrôlées afin de demeurer comprises entre 0 et 1.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet (Python)</div>
+          <p>Les simulations numériques et la construction de l'exemple calibré ont été réalisées en Python. L'implémentation couvre la génération de l'arbre, le calcul des forwards, la calibration des probabilités de transition et l'estimation des volatilités locales.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Toutes les probabilités de transition calibrées demeurent entre 0 et 1, conformément aux contraintes d'absence d'arbitrage. À partir d'une volatilité implicite initiale de 11 %, l'arbre produit des volatilités locales de 9,5 % et 9,3 % aux deux nœuds étudiés, ce qui représente une structure de volatilité plutôt qu'une hypothèse constante.</p>
+
+        <div class="rp-tags">
+          <span>Arbre trinomial implicite</span><span>Volatilité locale</span><span>Smile de volatilité</span>
+          <span>Calibration risque-neutre</span><span>Arrow-Debreu</span><span>Python</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+        <svg viewBox="0 0 340 245" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Arbre trinomial implicite calibré sur trois périodes">
+          <g stroke="var(--line)" stroke-width="1.1" fill="none">
+            <path d="M34 122 L112 69 M34 122 L112 122 M34 122 L112 175"/>
+            <path d="M112 69 L190 37 M112 69 L190 69 M112 69 L190 122"/>
+            <path d="M112 122 L190 69 M112 122 L190 122 M112 122 L190 175"/>
+            <path d="M112 175 L190 122 M112 175 L190 175 M112 175 L190 207"/>
+            <path d="M190 37 L268 19 M190 37 L268 37 M190 37 L268 69"/>
+            <path d="M190 69 L268 37 M190 69 L268 69 M190 69 L268 122"/>
+            <path d="M190 122 L268 69 M190 122 L268 122 M190 122 L268 175"/>
+            <path d="M190 175 L268 122 M190 175 L268 175 M190 175 L268 207"/>
+            <path d="M190 207 L268 175 M190 207 L268 207 M190 207 L268 225"/>
+          </g>
+          <g fill="var(--wine)">
+            <circle cx="34" cy="122" r="3.2"/><circle cx="112" cy="69" r="3.2"/><circle cx="112" cy="122" r="3.2"/><circle cx="112" cy="175" r="3.2"/>
+            <circle cx="190" cy="37" r="3.2"/><circle cx="190" cy="69" r="3.2"/><circle cx="190" cy="122" r="3.2"/><circle cx="190" cy="175" r="3.2"/><circle cx="190" cy="207" r="3.2"/>
+            <circle cx="268" cy="19" r="3.2"/><circle cx="268" cy="37" r="3.2"/><circle cx="268" cy="69" r="3.2"/><circle cx="268" cy="122" r="3.2"/><circle cx="268" cy="175" r="3.2"/><circle cx="268" cy="207" r="3.2"/><circle cx="268" cy="225" r="3.2"/>
+          </g>
+          <g font-family="JetBrains Mono,monospace" font-size="8.2" fill="var(--ink)">
+            <text x="24" y="114">100,00</text>
+            <text x="96" y="61">116,83</text><text x="97" y="114">100,00</text><text x="98" y="168">85,59</text>
+            <text x="174" y="30">136,50</text><text x="174" y="62">116,83</text><text x="176" y="115">100,00</text><text x="176" y="168">85,59</text><text x="177" y="200">73,26</text>
+            <text x="274" y="22">159,47</text><text x="274" y="40">136,50</text><text x="274" y="72">116,83</text><text x="274" y="125">100,00</text><text x="274" y="178">85,59</text><text x="274" y="210">73,26</text><text x="274" y="228">62,71</text>
+          </g>
+          <line x1="34" y1="238" x2="268" y2="238" stroke="var(--ink-faint)" stroke-width="1"/>
+          <g font-family="Inter,sans-serif" font-size="8.5" fill="var(--ink-dim)" text-anchor="middle">
+            <text x="34" y="234">t = 0</text><text x="112" y="234">t = 1</text><text x="190" y="234">t = 2</text><text x="268" y="234">t = 3</text>
+          </g>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> Arbre trinomial implicite sur trois périodes reproduit à partir de l'exemple numérique de la présentation. Le niveau initial est S<sub>0</sub> = 100 et les nœuds sont calculés récursivement avec une volatilité implicite initiale de 11 %.</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">Actuariat-Finance (Valorisation des commodités)</div>
+    <div class="rp-title">Modélisation du prix du gaz naturel et analyse de dérivés énergétiques</div>
+    <div class="rp-meta">
+      <div><b>Projet académique :</b> travail réalisé en équipe</div>
+      <div><b>Données :</b> 501 cours de clôture du gaz naturel (2017 à 2018)</div>
+      <div><b>Implémentation :</b> analyse statistique, calibration et back-tests en Python</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Modéliser un prix énergétique volatil et mesurer les flux associés à des instruments de couverture.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé</div><p>Analyse du retour à la moyenne, comparaison des modèles de Schwartz et de Clewlow-Strickland, puis back-tests d'un swap et d'une option swing.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Résultat</div><p>Le test ADF rejette la racine unitaire au seuil de 5 % (statistique −3,241; p = 0,0177), ce qui appuie une dynamique de retour à la moyenne sur la période.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Gestion du risque de marché, actifs réels, scénarios économiques, couverture des expositions et analyse des flux de dérivés.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème financier</div>
+        <p>Les prix du gaz naturel présentent des fluctuations marquées qui influencent la valeur des contrats énergétiques. Le projet étudie leur dynamique avant d'analyser les flux d'un swap à prix fixe et la flexibilité d'une option swing.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Analyse descriptive de 501 cours de clôture, test augmenté de Dickey-Fuller et modélisation à retour à la moyenne. Les modèles de Schwartz et de Clewlow-Strickland sont comparés, puis des règles contractuelles de quantité et de prix d'exercice sont appliquées aux dérivés.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement Python complet de l'importation des données, du test de stationnarité, de la calibration numérique, des projections et des back-tests du swap et de l'option swing.</p>
+        </div>
+
+        <div class="rp-subhead">Résultat principal</div>
+        <p>Entre janvier 2017 et décembre 2018, le prix observé varie de 2,552 à 4,837, avec un pic le 14 novembre 2018. La p-valeur ADF de 0,0177 soutient l'hypothèse de retour à la moyenne utilisée par les modèles; le back-test illustre ensuite comment le swap transforme l'écart au taux fixe en flux mensuels.</p>
+
+        <div class="rp-tags">
+          <span>Gaz naturel</span><span>Retour à la moyenne</span><span>Schwartz</span>
+          <span>Clewlow-Strickland</span><span>Swap</span><span>Option swing</span><span>Python</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+<svg viewBox="0 0 340 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prix observés du gaz naturel et trajectoires des modèles de Schwartz et Clewlow-Strickland">
+          <text x="18" y="17" font-family="JetBrains Mono,monospace" font-size="9.2" font-weight="600" fill="var(--wine)">PRIX OBSERVÉS ET MODÈLES (2017)</text>
+          <g stroke="var(--line)" stroke-width="0.8">
+            <line x1="42" y1="54" x2="326" y2="54"/><line x1="42" y1="132" x2="326" y2="132"/><line x1="42" y1="210" x2="326" y2="210"/>
+          </g>
+          <g font-family="JetBrains Mono,monospace" font-size="7.4" fill="var(--ink-faint)">
+            <text x="14" y="57">3,5</text><text x="14" y="135">3,0</text><text x="14" y="213">2,5</text>
+            <text x="42" y="229">janv.</text><text x="174" y="229">juil.</text><text x="300" y="229">déc.</text>
+          </g>
+          <polyline points="42.0,57.9 45.4,64.5 48.8,74.0 52.3,44.7 55.7,77.1 59.1,57.1 62.5,72.7 66.0,79.7 69.4,88.6 72.8,103.5 76.2,120.5 79.6,176.7 83.1,166.9 86.5,140.1 89.9,124.2 93.3,112.9 96.7,118.5 100.2,116.9 103.6,107.1 107.0,100.7 110.4,79.1 113.9,63.2 117.3,68.2 120.7,79.7 124.1,86.3 127.5,93.1 131.0,86.7 134.4,75.4 137.8,79.9 141.2,73.5 144.7,42.8 148.1,78.9 151.5,57.5 154.9,80.2 158.3,97.8 161.8,111.6 165.2,104.5 168.6,114.1 172.0,103.1 175.4,125.5 178.9,104.6 182.3,102.3 185.7,133.7 189.1,119.9 192.6,114.9 196.0,95.1 199.4,113.5 202.8,120.7 206.2,140.9 209.7,140.0 213.1,136.5 216.5,111.5 219.9,125.9 223.3,114.7 226.8,116.8 230.2,114.9 233.6,97.9 237.0,111.8 240.5,108.7 243.9,105.1 247.3,94.2 250.7,121.4 254.1,106.2 257.6,125.2 261.0,130.2 264.4,126.1 267.8,117.2 271.3,128.6 274.7,112.9 278.1,147.4 281.5,125.5 284.9,88.0 288.4,77.7 291.8,92.9 295.2,93.7 298.6,113.8 302.0,97.3 305.5,99.3 308.9,121.0 312.3,135.6 315.7,158.0 319.2,156.8 322.6,160.7 326.0,122.2" fill="none" stroke="#3B78A8" stroke-width="1.35" stroke-linejoin="round"/>
+          <polyline points="42.0,104.3 45.4,109.8 48.8,117.7 52.3,92.0 55.7,119.9 59.1,102.3 62.5,115.5 66.0,121.4 69.4,128.8 72.8,141.7 76.2,156.2 79.6,204.8 83.1,196.2 86.5,172.6 89.9,158.5 93.3,148.4 96.7,153.0 100.2,151.5 103.6,142.7 107.0,136.8 110.4,117.7 113.9,103.4 117.3,107.6 120.7,117.5 124.1,122.9 127.5,128.7 131.0,122.8 134.4,112.5 137.8,116.3 141.2,110.4 144.7,83.1 148.1,114.7 151.5,95.4 154.9,115.4 158.3,130.7 161.8,142.7 165.2,136.2 168.6,144.5 172.0,134.5 175.4,154.3 178.9,135.4 182.3,133.1 185.7,160.9 189.1,148.3 192.6,143.7 196.0,125.7 199.4,142.0 202.8,148.2 206.2,166.1 209.7,165.1 213.1,161.8 216.5,139.1 219.9,151.9 223.3,141.5 226.8,143.2 230.2,141.2 233.6,125.7 237.0,137.9 240.5,134.8 243.9,131.4 247.3,121.2 250.7,145.8 254.1,131.7 257.6,148.7 261.0,153.1 264.4,149.2 267.8,140.8 271.3,151.1 274.7,136.4 278.1,167.9 281.5,147.6 284.9,112.9 288.4,103.2 291.8,117.0 295.2,117.5 298.6,135.7 302.0,120.2 305.5,121.9 308.9,141.6 312.3,154.9 315.7,175.5 319.2,174.1 322.6,177.6 326.0,141.6" fill="none" stroke="var(--wine)" stroke-width="1.15" stroke-dasharray="4,2" stroke-linejoin="round"/>
+          <polyline points="42.0,58.7 45.4,64.2 48.8,72.2 52.3,47.5 55.7,74.8 59.1,58.0 62.5,71.1 66.0,77.1 69.4,84.6 72.8,97.3 76.2,111.7 79.6,159.5 83.1,151.2 86.5,128.6 89.9,115.1 93.3,105.5 96.7,110.3 100.2,109.0 103.6,100.7 107.0,95.2 110.4,76.7 113.9,63.1 117.3,67.4 120.7,77.3 124.1,82.9 127.5,88.9 131.0,83.4 134.4,73.6 137.8,77.5 141.2,72.0 144.7,45.4 148.1,76.7 151.5,58.1 154.9,77.8 158.3,93.2 161.8,105.3 165.2,99.1 168.6,107.5 172.0,97.9 175.4,117.5 178.9,99.3 182.3,97.3 185.7,125.0 189.1,112.9 192.6,108.5 196.0,91.2 199.4,107.4 202.8,113.7 206.2,131.7 209.7,130.9 213.1,128.0 216.5,105.8 219.9,118.7 223.3,108.8 226.8,110.6 230.2,109.0 233.6,94.0 237.0,106.4 240.5,103.6 243.9,100.5 247.3,90.8 250.7,115.2 254.1,101.6 257.6,118.6 261.0,123.2 264.4,119.6 267.8,111.7 271.3,121.9 274.7,107.8 278.1,139.0 281.5,119.3 284.9,85.5 288.4,76.2 291.8,90.0 295.2,90.8 298.6,109.0 302.0,94.1 305.5,95.9 308.9,115.7 312.3,129.1 315.7,149.6 319.2,148.6 322.6,152.2 326.0,117.1" fill="none" stroke="var(--forest)" stroke-width="1.15" stroke-dasharray="2.5,2" stroke-linejoin="round"/>
+          <g font-family="Inter,sans-serif" font-size="7.5" fill="var(--ink-dim)">
+            <line x1="45" y1="248" x2="61" y2="248" stroke="#3B78A8" stroke-width="1.5"/><text x="66" y="251">Observé</text>
+            <line x1="126" y1="248" x2="142" y2="248" stroke="var(--wine)" stroke-width="1.3" stroke-dasharray="4,2"/><text x="147" y="251">Schwartz</text>
+            <line x1="220" y1="248" x2="236" y2="248" stroke="var(--forest)" stroke-width="1.3" stroke-dasharray="2.5,2"/><text x="241" y="251">Clewlow</text>
+          </g>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> Reproduction SVG de la figure du rapport à partir des cours observés et des paramètres estimés. Les deux trajectoires modélisées suivent les variations du prix spot tout en les lissant; le test ADF (p = 0,0177) appuie le retour à la moyenne au seuil de 5 %.</div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="research-panel reveal">
+    <div class="rp-eyebrow">Projet personnel, en cours</div>
+    <div class="rp-title">Système de détection de régime macroéconomique et de sélection systématique d'actifs</div>
+    <div class="rp-meta">
+      <div><b>Projet personnel :</b> développement individuel, débuté en avril 2026 et toujours actif</div>
+      <div><b>Portée :</b> 3 des 5 modules du système complétés (régime, filtrage du bruit, sélection d'actifs)</div>
+      <div><b>Implémentation :</b> Python (modèle de Markov caché, filtre de Kalman, pandas, yfinance)</div>
+    </div>
+    <div class="rp-snapshot">
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Enjeu</div><p>Construire un système de décision entièrement mécanique : classer le régime de marché courant, en isoler le signal du bruit, puis sélectionner objectivement les actifs à privilégier.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Travail réalisé jusqu'à présent</div><p>Classificateur de régime par modèle de Markov caché, filtrage du bruit par filtre de Kalman et bandes ATR, puis modèle de score composite pour la sélection d'actifs.</p></div>
+      <div class="rp-snapshot-item"><div class="rp-snapshot-label">Statut</div><p>Les trois premiers modules sont complets et validés ; les deux derniers, portant sur la gestion du risque et l'exécution, sont en développement.</p></div>
+    </div>
+    <div class="rp-relevance"><b>Champ d'application</b><span>Détection de régime de marché, gestion du risque conditionnelle au cycle économique et validation rigoureuse de modèles quantitatifs.</span></div>
+    <div class="rp-body">
+      <div class="rp-text">
+        <div class="rp-subhead">Problème de modélisation</div>
+        <p>Un système de décision systématique n'a de valeur que si chacun de ses paramètres est justifié et si ses limites sont documentées plutôt que dissimulées. Ce projet personnel, toujours en développement, construit un pipeline complet de classification de régime macroéconomique et de sélection d'actifs, avec cette exigence de traçabilité comme fil conducteur.</p>
+
+        <div class="rp-subhead">Approche</div>
+        <p>Un modèle de Markov caché classe chaque jour de marché en régimes distincts. Un filtre de Kalman et des bandes ATR isolent ensuite le signal du bruit avant qu'un modèle de score composite sélectionne les actifs à privilégier pour chaque régime. Le système est construit et validé module par module ; les trois premiers sont complets, les deux derniers sont en développement.</p>
+
+        <div class="rp-callout">
+          <div class="rp-subhead">Contribution au projet</div>
+          <p>Développement Python complet du pipeline : classificateur de régime, filtre de Kalman, bandes ATR et modèle de score composite. Plusieurs versions de la métrique de performance ont été testées et rejetées avant de retenir la version finale, chaque choix étant justifié par une source publiée plutôt qu'arbitraire.</p>
+        </div>
+
+        <div class="rp-tags">
+          <span>Modèle de Markov caché</span><span>Filtre de Kalman</span><span>Détection de régime</span>
+          <span>Validation quantitative</span><span>Python</span>
+        </div>
+      </div>
+      <div class="rp-figure">
+<svg viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progression du système en cinq modules">
+          <text x="18" y="22" font-family="JetBrains Mono,monospace" font-size="9.5" font-weight="600" fill="var(--wine)">PROGRESSION DU SYSTÈME (5 MODULES)</text>
+          <g font-family="Inter,sans-serif" font-size="8.5" fill="var(--ink-dim)">
+            <text x="18" y="50">S1 · Moteur de régime macro</text>
+            <text x="18" y="78">S2 · Filtrage du bruit</text>
+            <text x="18" y="106">S3 · Sélection d'actifs</text>
+            <text x="18" y="134">S4 · Simulation Monte Carlo</text>
+            <text x="18" y="162">S5 · Moteur d'exécution</text>
+          </g>
+          <rect x="246" y="39" width="76" height="15" rx="7.5" fill="var(--forest-soft)"/>
+          <text x="284" y="49.5" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" font-weight="600" fill="var(--forest)">COMPLET</text>
+          <rect x="246" y="67" width="76" height="15" rx="7.5" fill="var(--forest-soft)"/>
+          <text x="284" y="77.5" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" font-weight="600" fill="var(--forest)">COMPLET</text>
+          <rect x="246" y="95" width="76" height="15" rx="7.5" fill="var(--forest-soft)"/>
+          <text x="284" y="105.5" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" font-weight="600" fill="var(--forest)">COMPLET</text>
+          <rect x="246" y="123" width="76" height="15" rx="7.5" fill="var(--brass-soft)"/>
+          <text x="284" y="133.5" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" font-weight="600" fill="var(--brass)">EN COURS</text>
+          <rect x="246" y="151" width="76" height="15" rx="7.5" fill="var(--panel-alt)"/>
+          <text x="284" y="161.5" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" font-weight="600" fill="var(--ink-faint)">À VENIR</text>
+        </svg>
+        <div class="rp-figure-caption"><b>Figure 1.</b> État d'avancement du système à ce jour : les trois premiers modules sont complets et validés, les deux derniers sont en développement.</div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="competences">
+  <div class="sec-index">§6 (Compétences techniques)</div>
+  <h2 class="sec-title">Compétences <em>actuarielles et techniques</em></h2>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <h4>Actuariat IARD</h4>
+      <div class="skill-tags">
+        <span>Modèles fréquence-sévérité</span><span>Tarification</span><span>Franchises et limites</span>
+        <span>Provisionnement</span><span>Censure</span><span>Validation des modèles</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Capital, solvabilité &amp; risques</h4>
+      <div class="skill-tags">
+        <span>VaR et TVaR</span><span>Allocation du capital</span><span>Dépendance et copules</span>
+        <span>Valeurs extrêmes</span><span>Risque catastrophique</span><span>ORSA</span><span>IFRS 17</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Statistique &amp; modélisation</h4>
+      <div class="skill-tags">
+        <span>Régression et GLM</span><span>Séries chronologiques</span><span>Simulation Monte Carlo</span>
+        <span>Économétrie</span><span>XGBoost et Random Forest</span><span>Backtesting</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Données &amp; programmation</h4>
+      <div class="skill-tags">
+        <span>R</span><span>Python</span><span>VBA</span><span>Excel avancé</span><span>SQL</span>
+        <span>SAS</span><span>STATA</span><span>SPSS</span><span>Oracle</span><span>SQL Server</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Finance quantitative</h4>
+      <div class="skill-tags">
+        <span>Processus stochastiques</span><span>Valorisation risque-neutre</span><span>Produits dérivés</span>
+        <span>Gestion du risque de taux</span><span>Allocation d'actifs</span><span>Stress testing</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Langues &amp; cheminement professionnel</h4>
+      <div class="skill-tags">
+        <span>Français professionnel</span><span>Anglais professionnel</span>
+        <span>Examen de synthèse de l'ICA (en cheminement)</span><span>AICA, puis FICA</span>
+        <span>Disponible dès janvier 2027</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-index">§7 (Contact)</div>
+  <div class="contact-panel reveal">
+    <div class="contact-title">Discutons opportunités.</div>
+    <p class="contact-sub">Ouvert aux stages et emplois en actuariat, gestion des risques ou finance quantitative — disponible dès janvier 2027.</p>
+    <div class="contact-info">
+      <span>hamzabouarga2002@gmail.com</span>
+      <span>+1 367 383 9567</span>
+      <span>Québec, QC</span>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:hamzabouarga2002@gmail.com" class="btn btn-primary">Envoyer un courriel →</a>
+      <a href="Hamza_Bouarga_CV.pdf" class="btn btn-ghost" download>CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Hamza Bouarga — École d'actuariat, Université Laval</footer>
+
+</div>
+
+<script>
+  // Recruiter-first project cards: keep the technical material available on demand.
+  document.querySelectorAll('.research-panel').forEach(panel => {
+    const body = panel.querySelector(':scope > .rp-body');
+    if (!body) return;
+    const details = document.createElement('details');
+    details.className = 'rp-details';
+    const summary = document.createElement('summary');
+    summary.textContent = 'Voir les détails techniques et les figures';
+    body.before(details);
+    details.append(summary, body);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Scrollspy for rail index
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.rail-link');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector('.rail-link[href="#' + entry.target.id + '"]');
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => spy.observe(s));
+
+  // Menu compact sur mobile
+  const navigation = document.querySelector('.rail');
+  const navToggle = document.getElementById('navToggle');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navigation.classList.toggle('menu-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+    navToggle.textContent = isOpen ? '×' : '☰';
+  });
+  links.forEach(link => link.addEventListener('click', () => {
+    navigation.classList.remove('menu-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Ouvrir le menu');
+    navToggle.textContent = '☰';
+  }));
+
+</script>
+</body>
+</html>
